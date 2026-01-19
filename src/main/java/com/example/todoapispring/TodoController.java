@@ -42,6 +42,16 @@ public class TodoController {
         return newTodo;
     }
 
+    @GetMapping("/todos/{todoId}")
+    public ResponseEntity<Todo> getTodoById(@PathVariable long todoId){
+        for(Todo todo : todoList){
+            if(todo.getId() == todoId){
+                return ResponseEntity.ok(todo);
+            }
+        }
+        return ResponseEntity.notFound().build(); //instead of returning 404 not found we can return a json object todo not found that is the hw
+    }
+
 
 
 
