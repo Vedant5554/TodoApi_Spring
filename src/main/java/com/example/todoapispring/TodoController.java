@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/v1/todos") //no need to add todos infront of other getmaping
 public class TodoController {
 
     private static List<Todo> todoList;
@@ -18,12 +19,12 @@ public class TodoController {
     }
 
 
-    @GetMapping("/todos")
+    @GetMapping()
     public ResponseEntity<List<Todo>> getTodos(){
         return ResponseEntity.ok(todoList);
     }
 
-    @PostMapping("/todos")
+    @PostMapping()
 
     public Todo createTodo(@RequestBody Todo newTodo){
 
@@ -52,6 +53,11 @@ public class TodoController {
         return ResponseEntity.notFound().build(); //instead of returning 404 not found we can return a json object todo not found that is the hw
     }
 
+//hw
+    //figure out how we can send error json response with `ResponseEntity` for not found cases
+    //Implements the api & figure out the api contract also for the following
+    //delete request for deleting a todo
+    //patch request to update a specific todo
 
 
 
