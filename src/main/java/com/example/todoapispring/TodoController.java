@@ -73,7 +73,31 @@ public class TodoController {
     //patch request to update a specific todo
 
 
+//    @DeleteMapping
+//    public ResponseEntity<Void> deleteTodos(){
+//        todoList.clear();
+//        return ResponseEntity.noContent().build(); //this will delete everything in that list
+//    }
+//
 
+    @DeleteMapping("/{todoId}")
+    public ResponseEntity<Void> deleteTodos(@PathVariable long todoId){
+//        for (Todo todo : todoList ){
+//            if(todo.getId() == todoId){
+//                todoList.remove(todo);
+//            }
+//        }//wrong
+
+        //correct
+        boolean removed = todoList.removeIf(todo -> todo.getId() == todoId);
+        if (!removed) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.noContent().build();
+
+
+    }
 
 
 }
