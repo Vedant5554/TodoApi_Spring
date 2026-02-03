@@ -13,7 +13,10 @@ import java.util.List;
 @RequestMapping("/api/v1/todos")
 public class TodoController {
 
-    private TodoService todoService; // anotherTodoService
+//    @Autowired
+//    @Qualifier("anotherTodoService") if we are giving these we don't need to write in dependency injection
+    private TodoService todoService; // anotherTodoService  // Composition
+    //instead of depending on concrete classes i should depend on abstract classes DIP
 
     private TodoService todoservice2; // fakeTodoService
 
@@ -22,8 +25,9 @@ public class TodoController {
     private static final String TODO_NOT_FOUND = "Todo not found";
 
     public TodoController(
-            @Qualifier("anotherTodoService") TodoService todoService,
-            @Qualifier("fakeTodoService")  TodoService todoservice2) {
+            @Qualifier("anotherTodoService") TodoService todoService,  //this thing is dependency injection
+            @Qualifier("FakeTodoService")  TodoService todoservice2) {
+        // if more than one classes are implementation the todoservice interface so we use qualifiers
 
         this.todoService = todoService;
         this.todoservice2 = todoservice2;
