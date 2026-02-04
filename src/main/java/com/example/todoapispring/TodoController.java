@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@RestController // This is active at the time of compilation not discarded by the system BCZ in this the RetentionPolicy iS RUNTIME
 @RequestMapping("/api/v1/todos")
 public class TodoController {
 
