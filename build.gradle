@@ -29,6 +29,9 @@ dependencies {
 
     // Source: https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
     implementation  'org.aspectj:aspectjweaver:1.9.8'
+
+    implementation 'org.springframework.boot:spring-boot-starter'
+
 }
 
 tasks.named('test') {
